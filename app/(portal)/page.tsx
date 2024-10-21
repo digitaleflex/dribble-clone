@@ -1,10 +1,11 @@
 import React from 'react'
+import Section1 from '../../components/sections/section1';
 
 const page = () => {
   return (
-    <div>
-      page 
-    </div>
+    <>
+      <Section1 />
+    </>
   )
 }
 
