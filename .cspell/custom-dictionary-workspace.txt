@@ -1,8 +1,15 @@
 # Custom Dictionary Words
 Bardenova
+Dolganiuc
 Gruev
+Kosinov
+Lepisov
 Lilla
+lucide
+Mihai
 Showalter
 tailwindcss
 Victa
 Wille
+woop
+Yehor
