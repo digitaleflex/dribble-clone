@@ -6,9 +6,6 @@ import React from "react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -16,8 +13,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -27,12 +22,9 @@ import { Button } from "../ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
+  NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import HeaderNavigationMenuContent from "./header-menu-navigation-content";
@@ -40,44 +32,37 @@ import { Input } from "../ui/input";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   return (
-    <header className="flex items-center justify-between  p-4">
+    <header className="flex items-center justify-between px-6 py-4 shadow-lg">
+      {/* Mobile Menu Button */}
       <div className="flex items-center lg:hidden">
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
           <SheetTrigger asChild>
             <Button variant={"ghost"} size={"icon"}>
               <Menu className="h-6 w-6" />
-
               <span className="sr-only">Open Menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent className="w-full" side={"top"}>
-            <nav className="flex flex-col space-y-4">
+            <nav className="flex flex-col space-y-4 p-4">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant={"ghost"} className="w-full justify-start">
-                    Find Desingers
+                    Find Designers
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="p-2">
                   <DropdownMenuItem>
                     <Link href={"#"} className="w-full">
                       Designer search
                     </Link>
                   </DropdownMenuItem>
-
-                  <DropdownMenuItem>
-                    <Link href={"#"} className="w-full">
-                      Designer search
-                    </Link>
-                  </DropdownMenuItem>
-
                   <DropdownMenuItem>
                     <Link href={"#"} className="w-full">
                       Post a job
                     </Link>
                   </DropdownMenuItem>
-
                   <DropdownMenuItem>
                     <Link href={"#"} className="w-full">
                       Go pro
@@ -92,24 +77,21 @@ const Header = () => {
               >
                 Inspiration
               </Link>
-
               <Link
                 href={"#"}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground w-full"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground "
               >
-                jobs
+                Jobs
               </Link>
-
               <Link
                 href={"#"}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground w-full"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground "
               >
-                Firx
+                Go Pro
               </Link>
-
               <Link
                 href={"#"}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground w-full"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground "
               >
                 Login
               </Link>
@@ -118,20 +100,23 @@ const Header = () => {
         </Sheet>
       </div>
 
-      <nav className="hidden  lg:flex items-center space-x-6">
+      {/* Desktop Navigation */}
+      <nav className="hidden lg:flex items-center space-x-8">
         <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem className="hover:bg-transparent">
-              <NavigationMenuTrigger>Find Designers</NavigationMenuTrigger>
+          <NavigationMenuList className="space-x-6">
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-foreground">
+                Find Designers
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="w-[250px] gap-3 flex flex-col p-4 items-center">
                   <HeaderNavigationMenuContent
-                    title="Design search "
-                    subtitle="Find designer for ur member"
+                    title="Design search"
+                    subtitle="Find designer for your team"
                   />
                   <HeaderNavigationMenuContent
-                    title="Design search "
-                    subtitle="Find designer for ur member"
+                    title="Post a job"
+                    subtitle="Hire the best designers"
                   />
                 </div>
               </NavigationMenuContent>
@@ -141,49 +126,59 @@ const Header = () => {
 
         <Link
           href={"#"}
-          className="text-sm font-medium text-muted-foreground hover:text-foreground w-full"
+          className="text-sm font-medium text-muted-foreground hover:text-foreground"
         >
           Inspiration
         </Link>
-
         <Link
           href={"#"}
-          className="text-sm font-medium text-muted-foreground hover:text-foreground w-full"
+          className="text-sm font-medium text-muted-foreground hover:text-foreground"
         >
-          jobs
+          Jobs
         </Link>
-
         <Link
           href={"#"}
-          className="text-sm font-medium text-muted-foreground hover:text-foreground w-full"
+          className="text-sm font-medium text-muted-foreground hover:text-foreground"
         >
-          Firx
+          Go Pro
         </Link>
       </nav>
 
-        <Link href={"#"} className="text-2xl  font-bold hover:text-forground/65">
-            Dribble
-        </Link>
+      {/* Brand */}
+      <Link
+        href={"/"}
+        className="text-2xl font-bold hover:text-foreground/65 transition-all"
+      >
+        Dribble
+      </Link>
 
-        <div className={'flex items-center space-4'}>
-          <Button variant={"ghost"} size={"icon"}  className="lg:hidden" >  
-            <Search className="h-5 w-5"  />
-            <span className="sr-only" >Open Search</span>
+      {/* Search & Actions */}
+      <div className="flex items-center space-x-4">
+        <Button variant={"ghost"} size={"icon"} className="lg:hidden">
+          <Search className="h-5 w-5" />
+          <span className="sr-only">Open Search</span>
         </Button>
 
         <div className="hidden lg:block relative">
-        <Search className="absolute inset-y-0 right-0 pl-3 pr-10 w-full bg-transparent text-gray-400 border-0 rounded-md focus:outline-none focus:ring-0 focus:text-gray-900 sm:text-sm" />
-        <Input
-            className="pl-10 pr-5 py-5 rounded-full"
-            type="search"
-            placeholder="Search Dribble"
-        />
+          <div className="relative">
+            <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+            <Input
+              className="pl-10 pr-4 py-5 rounded-full border border-gray-300 focus:ring-2 focus:ring-pink-500 transition-all"
+              type="search"
+              placeholder="Search Dribble"
+            />
+          </div>
         </div>
 
-        
-        </div>
+          <Button  variant={"ghost"} className="hidden lg:inline flex text-sm font-medium hover:bg">
+            Log In
+          </Button>
 
+          <Button size={"lg"}  className="rounded-full p-6 bg-foreground text-white hover:bg-foreground/80" >
+            Sign up
+          </Button>
 
+      </div>
     </header>
   );
 };
